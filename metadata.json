@@ -1,0 +1,5 @@
+{
+  "name": "AI Transparency User Study",
+  "description": "An interactive web-based user study to evaluate how AI transparency affects human trust and confidence when interpreting privacy and consent policies.",
+  "requestFramePermissions": []
+}
