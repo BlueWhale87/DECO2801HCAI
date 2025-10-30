@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import { SurveyAnswers, LikertScore } from '../types';
 
@@ -27,6 +26,11 @@ const Survey: React.FC<SurveyProps> = ({ questions, title, onComplete }) => {
     setAnswers(prev => ({ ...prev, [question]: score }));
   };
   
+  // Handler for the comment textarea. Ensures state is updated on every keystroke.
+  const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(event.target.value);
+  };
+
   // A simple validation check to see if all questions have been answered.
   // This is used to enable/disable the submit button.
   const isComplete = questions.every(q => answers[q] !== undefined);
@@ -81,10 +85,11 @@ const Survey: React.FC<SurveyProps> = ({ questions, title, onComplete }) => {
           <textarea
             id="comment"
             value={comment}
-            onChange={e => setComment(e.target.value)}
+            onChange={handleCommentChange}
             rows={3}
-            className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 placeholder:text-slate-400"
             placeholder="Any additional feedback?"
+            style={{ color: 'ffffff' }}
           />
         </div>
 
